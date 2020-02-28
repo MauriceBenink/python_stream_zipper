@@ -1,0 +1,104 @@
+class a:
+	#Constructor method, Cannot return anything
+	def __init__(self): 
+		self.b = 1
+		self.arr = [1,2,3,4]
+	#Method for converting to a string
+	def __str__(self):
+		return "This class returns a string when asked"
+	#Method for how to represent itself when asked
+	def __repr__(self):
+		return "This class represents itself as asked"
+	#Method to set what it should show when length is called
+	def __len__(self):
+		return len(self.arr)
+	#Method to make class work with for operators (for, foreach)
+	def __getitem__(self,x):
+		return self.arr[x]
+	#Method to catch unknown calls
+	def __getattr__(self,name):
+		return "Handle name"
+	#Method to define how to reverse something
+	def __reversed__(self):
+		return reversed(self.arr)
+	#Method that gets called when the class is called as function
+	def __call__(self):
+		return self.arr
+	#Methods to make class work with "with VAL as LIST" operators
+	def __enter__(self):
+		print("Enter")
+		self.copyArr = self.arr[::]
+		return self;
+	def __exit__(self,type,val,tb):
+		print("EXIT")
+		if type :
+			self.arr = self.copyArr
+			print("Rollback")
+		else :
+			print("Okay")
+	#Method to do binary operators with (applies to all  Binary operators listed)
+	def __add__(self,other):
+		return self.b + other
+	#Method to do Assignment operators with (applies to all Assignment operators listed)
+	def __iadd__(self,other):
+		self.b += other
+		return self
+	#Method to do Unary operators with (applies to all Unary operators listed)
+	def __neg__(self):
+		return -self.b
+	#Method to do Comparison operators with (applies to all Comparison operators listed)
+	def __eq__(self,other):
+		return self.b == other
+
+
+
+
+
+
+Binary Operators
++					object.__add__(self, other)
+-					object.__sub__(self, other)
+*					object.__mul__(self, other)
+//					object.__floordiv__(self, other)
+/					object.__div__(self, other)
+%					object.__mod__(self, other)
+**					object.__pow__(self, other[, modulo])
+<<					object.__lshift__(self, other)
+>>					object.__rshift__(self, other)
+&					object.__and__(self, other)
+^					object.__xor__(self, other)
+|					object.__or__(self, other)
+
+Assignment Operators
++=					object.__iadd__(self, other)
+-=					object.__isub__(self, other)
+*=					object.__imul__(self, other)
+/=					object.__idiv__(self, other)
+//=					object.__ifloordiv__(self, other)
+%=					object.__imod__(self, other)
+**=					object.__ipow__(self, other[, modulo])
+<<=					object.__ilshift__(self, other)
+>>=					object.__irshift__(self, other)
+&=					object.__iand__(self, other)
+^=					object.__ixor__(self, other)
+|=					object.__ior__(self, other)
+
+Unary Operators:
+-					object.__neg__(self)
++					object.__pos__(self)
+abs()					object.__abs__(self)
+~					object.__invert__(self)
+complex()				object.__complex__(self)
+int()					object.__int__(self)
+long()					object.__long__(self)
+float()					object.__float__(self)
+oct()					object.__oct__(self)
+hex()					object.__hex__(self)
+
+Comparison Operators
+<					object.__lt__(self, other)
+<=					object.__le__(self, other)
+==					object.__eq__(self, other)
+!=					object.__ne__(self, other)
+>=					object.__ge__(self, other)
+>					object.__gt__(self, other)
